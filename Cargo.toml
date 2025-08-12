@@ -7,3 +7,4 @@ edition = "2024"
 cfg-if = "1.0"
 axplat = { version = "0.1.0", path = "../axplat_crates/axplat" }
 axplat-aarch64-qemu-virt = { path = "../axplat_crates/platforms/axplat-aarch64-qemu-virt" }
+axplat-aarch64-raspi ={ path="../axplat_crates/platforms/axplat-aarch64-raspi" }

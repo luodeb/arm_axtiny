@@ -1,13 +1,10 @@
 #![no_std]
 #![no_main]
 
-extern crate axplat_aarch64_qemu_virt;
+// extern crate axplat_aarch64_qemu_virt;
+extern crate axplat_aarch64_raspi;
 
 fn init_kernel(cpu_id: usize, arg: usize) {
-    // x86_64 requires the `percpu` crate to be initialized first.
-    #[cfg(target_arch = "x86_64")]
-    axcpu::init::init_percpu(cpu_id);
-
     // Initialize trap, console, time.
     axplat::init::init_early(cpu_id, arg);
 
