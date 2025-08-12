@@ -1,0 +1,9 @@
+[package]
+name = "arm_axtiny"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cfg-if = "1.0"
+axplat = { version = "0.1.0", path = "../axplat_crates/axplat" }
+axplat-aarch64-qemu-virt = { path = "../axplat_crates/platforms/axplat-aarch64-qemu-virt" }
