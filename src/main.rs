@@ -1,7 +1,10 @@
 #![no_std]
 #![no_main]
 
+#[cfg(feature = "plat_qemu")]
 extern crate axplat_aarch64_qemu_virt;
+#[cfg(feature = "plat_raspi")]
+extern crate axplat_aarch64_raspi;
 
 fn init_kernel(cpu_id: usize, arg: usize) {
     // Initialize trap, console, time.
@@ -12,7 +15,7 @@ fn init_kernel(cpu_id: usize, arg: usize) {
 }
 
 #[axplat::main]
-fn main(cpu_id: usize, arg: usize) -> ! {
+fn kernel_main(cpu_id: usize, arg: usize) -> ! {
     init_kernel(cpu_id, arg);
 
     axplat::console_println!("Hello, ArceOS!");
