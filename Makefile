@@ -5,11 +5,13 @@ OBJDUMP ?= rust-objdump -d --print-imm-hex --x86-asm-syntax=intel
 OBJCOPY ?= rust-objcopy --binary-architecture=$(ARCH)
 
 TARGET := aarch64-unknown-none-softfloat
-
+PLAT ?= qemu
 
 OUT_ELF := $(CURDIR)/target/$(TARGET)/release/$(APP)
 OUT_BIN := $(OUT_ELF).bin
 OUT_RASPI := tools/chainloader/demo_payload_rpi4.img
+
+features := $(PLAT)
 
 qemu_args-aarch64 := \
   -cpu cortex-a72 \
@@ -19,7 +21,7 @@ qemu_args-aarch64 := \
 all: build
 
 build:
-	cargo build -p $(APP) --target $(TARGET) --release
+	cargo build -p $(APP) --target $(TARGET) --release --no-default-features --features "$(features)"
 
 $(OUT_BIN): build
 	$(OBJCOPY) --strip-all -O binary $(OUT_ELF) $(OUT_BIN)
@@ -41,3 +43,4 @@ clippy:
 
 clean:
 	cargo clean
+	@rm -f *.lds

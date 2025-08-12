@@ -1,13 +1,7 @@
 use std::io::Result;
 
-fn kernel_base(arch: &str) -> usize {
-    match arch {
-        "x86_64" => 0xffff_8000_0020_0000,
-        "aarch64" => 0xffff_0000_4020_0000,
-        "riscv64" => 0xffff_ffc0_8020_0000,
-        "loongarch64" => 0xffff_0000_8000_0000,
-        _ => panic!("Unsupported target architecture"),
-    }
+fn kernel_base(_arch: &str) -> usize {
+    0xffff_0000_0008_0000
 }
 
 fn gen_linker_script(arch: &str) -> Result<()> {
