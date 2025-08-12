@@ -1,10 +1,7 @@
 #![no_std]
 #![no_main]
 
-#[cfg(feature = "qemu")]
 extern crate axplat_aarch64_qemu_virt;
-#[cfg(feature = "raspi")]
-extern crate axplat_aarch64_raspi;
 
 fn init_kernel(cpu_id: usize, arg: usize) {
     // Initialize trap, console, time.

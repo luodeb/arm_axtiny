@@ -1,7 +1,7 @@
 use std::io::Result;
 
 fn kernel_base(_arch: &str) -> usize {
-    0xffff_0000_0008_0000
+    0xffff_0000_4020_0000
 }
 
 fn gen_linker_script(arch: &str) -> Result<()> {
