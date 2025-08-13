@@ -3,13 +3,14 @@
 #![feature(alloc_error_handler)]
 #![feature(get_mut_unchecked)]
 
-use log::info;
-
 extern crate axplat_aarch64_raspi;
 extern crate alloc;
+
+#[macro_use]
 extern crate log;
 
 mod utils;
+mod user;
 
 fn init_kernel(cpu_id: usize, arg: usize) {
     // Initialize trap, console, time.
@@ -23,28 +24,14 @@ fn init_kernel(cpu_id: usize, arg: usize) {
 fn kernel_main(cpu_id: usize, arg: usize) -> ! {
     init_kernel(cpu_id, arg);
 
-    utils::heap_allocator::init_heap();
-
     axplat::console_println!("Hello, ArceOS!");
     axplat::console_println!("cpu_id = {cpu_id}, arg = {arg:#x}");
 
-    utils::logging::log_init();
-
-    for _ in 0..5 {
-        axplat::time::busy_wait(axplat::time::TimeValue::from_secs(1));
-        info!("{:?} elapsed.", axplat::time::monotonic_time());
-    }
-
-    info!("All done, shutting down!");
-
-    utils::allocator::run_allocator_tests();
-
-    axplat::power::system_off();
+    user::user_main();
 }
 
-#[cfg(all(target_os = "none", not(test)))]
 #[panic_handler]
 fn panic(info: &core::panic::PanicInfo) -> ! {
-    axplat::console_println!("{info}");
+    error!("{info}");
     axplat::power::system_off()
 }
