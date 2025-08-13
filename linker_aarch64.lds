@@ -46,6 +46,11 @@ SECTIONS
 
     _ekernel = .;
 
+    . = ALIGN(64);
+    __heap_start = .;
+    . += 0x1000000; /* 16MB */
+    __heap_end = .;
+
     /DISCARD/ : {
         *(.comment)
     }

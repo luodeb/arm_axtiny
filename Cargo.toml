@@ -7,3 +7,5 @@ edition = "2024"
 cfg-if = "1.0"
 axplat = { version = "0.1.0" }
 axplat-aarch64-raspi ={ version = "0.1.0" }
+log = "0.4"
+linked_list_allocator = "0.10"
