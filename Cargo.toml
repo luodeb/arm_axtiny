@@ -3,13 +3,7 @@ name = "arm_axtiny"
 version = "0.1.0"
 edition = "2024"
 
-[features]
-default = ["plat_qemu"]
-plat_qemu = ["axplat-aarch64-qemu-virt"]
-plat_raspi = ["axplat-aarch64-raspi"]
-
 [dependencies]
 cfg-if = "1.0"
-axplat = { version = "0.1.0", path = "../axplat_crates/axplat" }
-axplat-aarch64-qemu-virt = { path = "../axplat_crates/platforms/axplat-aarch64-qemu-virt", optional = true }
-axplat-aarch64-raspi ={ path = "../axplat_crates/platforms/axplat-aarch64-raspi", optional = true }
+axplat = { version = "0.1.0" }
+axplat-aarch64-raspi ={ version = "0.1.0" }

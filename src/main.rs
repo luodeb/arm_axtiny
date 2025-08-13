@@ -1,9 +1,6 @@
 #![no_std]
 #![no_main]
 
-#[cfg(feature = "plat_qemu")]
-extern crate axplat_aarch64_qemu_virt;
-#[cfg(feature = "plat_raspi")]
 extern crate axplat_aarch64_raspi;
 
 fn init_kernel(cpu_id: usize, arg: usize) {

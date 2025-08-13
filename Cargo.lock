@@ -66,7 +66,6 @@ name = "arm_axtiny"
 version = "0.1.0"
 dependencies = [
  "axplat",
- "axplat-aarch64-qemu-virt",
  "axplat-aarch64-raspi",
  "cfg-if",
 ]
@@ -152,6 +151,8 @@ dependencies = [
 [[package]]
 name = "axplat"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c86cdb48cf1fbd432f4326ab0852b696ac49442b0ea0aed3401cb0bbe370a19f"
 dependencies = [
  "axplat-macros",
  "bitflags 2.9.1",
@@ -165,6 +166,8 @@ dependencies = [
 [[package]]
 name = "axplat-aarch64-peripherals"
 version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2f3455ad3c2e0da36047388ac263aa6cf6b80ad80a2d9f1186d73fec2f0cafc7"
 dependencies = [
  "aarch64-cpu",
  "arm_gicv2",
@@ -180,20 +183,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "axplat-aarch64-qemu-virt"
-version = "0.1.0"
-dependencies = [
- "axconfig-macros",
- "axcpu",
- "axplat",
- "axplat-aarch64-peripherals",
- "log",
- "page_table_entry",
-]
-
-[[package]]
 name = "axplat-aarch64-raspi"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "863fb52aa2173524f275045c98ad12eb30f07765b91130ce3f15b4f71ea6445d"
 dependencies = [
  "aarch64-cpu",
  "axconfig-macros",
@@ -207,6 +200,8 @@ dependencies = [
 [[package]]
 name = "axplat-macros"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f90dfaee06a112fe4f810c60af1a86bc080af2172185b491cacc307b84dff748"
 dependencies = [
  "proc-macro2",
  "quote",
