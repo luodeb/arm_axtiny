@@ -37,4 +37,3 @@ clippy:
 
 clean:
 	cargo clean
-	@rm -f *.lds
